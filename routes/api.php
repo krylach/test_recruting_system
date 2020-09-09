@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'candidate', 'middleware' => 'auth:api'], function () {
+    Route::ANY('/', 'Candidate\CandidateController@index')->name('candidate.index');
+    Route::ANY('search', 'Candidate\CandidateController@search')->name('candidate.search');
+    Route::POST('create', 'Candidate\CandidateController@store')->name('candidate.create');
+    Route::DELETE('{id}/delete',  'Candidate\CandidateController@destroy')->name('candidate.delete');
+    Route::PUT('{id}/update',  'Candidate\CandidateController@update')->name('candidate.update');
+});

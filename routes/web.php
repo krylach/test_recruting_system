@@ -21,10 +21,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'candidate'], function () {
-    Route::get('/', 'Candidate\CandidateController@index')->name('candidate.index');
-    Route::get('search', 'Candidate\CandidateController@search')->name('candidate.search');
-    Route::get('create', 'Candidate\CandidateController@store')->name('candidate.create');
-    Route::get('{id}/delete',  'Candidate\CandidateController@destroy')->name('candidate.delete');
-    Route::get('{id}/update',  'Candidate\CandidateController@update')->name('candidate.update');
-});
